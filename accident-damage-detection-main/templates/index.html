@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accident Damage Detection</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Style -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        input[type="file"] {
+            margin-bottom: 15px;
+            padding: 8px;
+            background: #fff;
+            color: #000;
+            border-radius: 6px;
+            width: 100%;
+        }
+
+        button {
+            background: #ff416c;
+            background: linear-gradient(to right, #ff4b2b, #ff416c);
+            border: none;
+            padding: 12px 25px;
+            color: #fff;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #e94057;
+        }
+
+        h2, h3 {
+            margin-top: 25px;
+            color: #ffd700;
+        }
+
+        img {
+            margin-top: 10px;
+            border-radius: 10px;
+            max-width: 100%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        /* Loader */
+        #loader {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .spinner {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #ff416c;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+    <!-- Optional: Auto show loader on submit -->
+    <script>
+        function showLoader() {
+            document.getElementById('loader').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Accident Damage Detection</h1>
+
+    <form action="/predict" method="post" enctype="multipart/form-data" onsubmit="showLoader()">
+        <label for="image">Upload Car Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+        <button type="submit">Detect Damage</button>
+    </form>
+
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    {% if result %}
+        <h2>Prediction Result:</h2>
+        <p>{{ result }}</p>
+    {% endif %}
+
+    {% if detected_image %}
+        <h3>Detected Damage (highlighted):</h3>
+        <img src="{{ url_for('static', filename=detected_image) }}" alt="Detected Damage">
+    {% endif %}
+
+    {% if uploaded_image %}
+        <h3>Original Uploaded Image:</h3>
+        <img src="{{ url_for('static', filename=uploaded_image) }}" alt="Uploaded Image">
+    {% endif %}
+
+</body>
+</html>
