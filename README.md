@@ -1,10 +1,12 @@
 # Car Damage Detector (YOLOv8 + Flask)
 
+[![Python](https://camo.githubusercontent.com/8ade7aa7794286744e80c85a211c7f0b6882c059eb17d0ac4a5e263cbfe44c6e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f507974686f6e2d332e31302532422d626c75653f6c6f676f3d707974686f6e)](https://www.python.org/) [![Flask](https://camo.githubusercontent.com/dfb7a8b9ad83ae9f36193da7d6528998510962652a4db43c8e3e81d3765194c3/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f466c61736b2d4261636b656e642d6c69676874677265793f6c6f676f3d666c61736b)](https://flask.palletsprojects.com/) [![Ultralytics](https://img.shields.io/badge/Ultralytics-YOLOv8-blue?logo=ultralytics)](https://ultralytics.com/) [![YOLOv8](https://img.shields.io/badge/Model-YOLOv8-green)](https://github.com/ultralytics/ultralytics) [![License](https://camo.githubusercontent.com/d6bc2b26794002c24d023acaab01b6dbb953c57ab9cb80ba5b8aa2f2bd5de99a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6f676f2d4d49542d626c7565)](LICENSE)
+
 A computer vision application that uses a trained **YOLOv8 object detection model** to automatically identify and localize car damage in uploaded images.
 
-The project provides a simple **Flask-based web interface** where users can upload a car image and view the detected damage areas with bounding boxes.
+The project provides a simple **Flask-based web interface** where users can upload a car image and view detected damage areas with bounding boxes.
 
-
+---
 
 ## Project Overview
 
@@ -20,13 +22,13 @@ The YOLOv8 model processes the uploaded image and identifies damage locations by
 * Provide predictions through a Flask web application
 * Display detection results directly in the browser
 
-
+---
 
 ## Demo
 
 Upload an image of a car through the web interface. The trained YOLOv8 model processes the image and highlights detected damage areas using bounding boxes.
 
-
+---
 
 ## Model Details
 
@@ -53,7 +55,7 @@ crack
 
 > Replace the classes above with the exact classes used in your trained model if they are different.
 
-
+---
 
 ## System Architecture
 
@@ -75,19 +77,19 @@ Detection Result
 Display Result in Browser
 ```
 
-
+---
 
 ## Tech Stack
 
-| Component   | Version | Description                 |
-| ----------- | ------- | --------------------------- |
-| Flask       | 3.1.0   | Backend web framework       |
-| Jinja2      | 3.1.4   | HTML template engine        |
-| Ultralytics | 8.3.32  | YOLOv8 model and inference  |
-| YOLOv8      | —       | Car damage object detection |
-| Python      | —       | Application development     |
+| Component       | Version | Description                 |
+| --------------- | ------- | --------------------------- |
+| **Python**      | —       | Application development     |
+| **Flask**       | 3.1.0   | Backend web framework       |
+| **Jinja2**      | 3.1.4   | HTML template engine        |
+| **Ultralytics** | 8.3.32  | YOLOv8 model and inference  |
+| **YOLOv8**      | —       | Car damage object detection |
 
-
+---
 
 ## Installation
 
@@ -124,11 +126,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-
+---
 
 ## Requirements
-
-The project uses the following Python packages:
 
 ```text
 Flask==3.1.0
@@ -136,7 +136,7 @@ Jinja2==3.1.4
 ultralytics==8.3.32
 ```
 
-
+---
 
 ## Usage
 
@@ -147,8 +147,6 @@ python app.py
 ```
 
 ### 2. Open the Application
-
-Open the following address in your browser:
 
 ```text
 http://127.0.0.1:5000/
@@ -167,7 +165,7 @@ The YOLOv8 model will:
 5. Save the detection result.
 6. Display the processed image in the browser.
 
-
+---
 
 ## Project Structure
 
@@ -206,11 +204,9 @@ car-damage-detector-yolov8/
 | `requirements.txt`     | Python dependencies                    |
 | `README.md`            | Project documentation                  |
 
-
+---
 
 ## Detection Workflow
-
-The application follows this workflow:
 
 ```text
 1. User uploads car image
@@ -230,7 +226,7 @@ The application follows this workflow:
 8. Result is displayed to the user
 ```
 
-
+---
 
 ## Example Output
 
@@ -260,7 +256,7 @@ Dent: 0.87
 
 The example values above are only for illustration and should be replaced with actual model output when available.
 
-
+---
 
 ## Model Inference
 
@@ -270,9 +266,9 @@ The trained YOLOv8 model is loaded from:
 weights/best.pt
 ```
 
-The model performs object detection on the uploaded image and returns the detected objects along with their bounding-box coordinates and confidence scores.
+The model performs object detection on the uploaded image and returns detected objects along with their bounding-box coordinates and confidence scores.
 
-
+---
 
 ## Future Improvements
 
@@ -287,7 +283,7 @@ The model performs object detection on the uploaded image and returns the detect
 * Optimize the model for faster inference
 * Add real-time camera-based damage detection
 
-
+---
 
 ## Limitations
 
@@ -297,7 +293,7 @@ The model performs object detection on the uploaded image and returns the detect
 * The model should be evaluated on independent data before production use.
 * Detection results should be treated as automated assistance rather than a definitive insurance or repair assessment.
 
-
+---
 
 ## Contributing
 
@@ -312,13 +308,13 @@ Contributions are welcome.
 
 For major changes, open an issue first to discuss the proposed changes.
 
-
+---
 
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-
+---
 
 ## Author
 
@@ -328,7 +324,7 @@ AI Engineer | Machine Learning | Computer Vision | Generative AI
 
 Email: `muhammadbehramhassan@gmail.com`
 
-
+---
 
 ## Support
 
