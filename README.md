@@ -1,93 +1,170 @@
 # Car Damage Detector (YOLOv8 + Flask)
 
-[![Python](https://camo.githubusercontent.com/8ade7aa7794286744e80c85a211c7f0b6882c059eb17d0ac4a5e263cbfe44c6e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f507974686f6e2d332e31302532422d626c75653f6c6f676f3d707974686f6e)](https://www.python.org/) [![Flask](https://camo.githubusercontent.com/dfb7a8b9ad83ae9f36193da7d6528998510962652a4db43c8e3e81d3765194c3/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f466c61736b2d4261636b656e642d6c69676874677265793f6c6f676f3d666c61736b)](https://flask.palletsprojects.com/) [![Ultralytics](https://img.shields.io/badge/Ultralytics-YOLOv8-blue?logo=ultralytics)](https://ultralytics.com/) [![YOLOv8][![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)(https://camo.githubusercontent.com/d6bc2b26794002c24d023acaab01b6dbb953c57ab9cb80ba5b8aa2f2bd5de99a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6f676f2d4d49542d626c7565)](LICENSE)
+A web-based car damage detection system built with **YOLOv8** and **Flask**. The application allows users to upload a car image and automatically detects visible damage using a trained object detection model.
 
-A computer vision application that uses a trained **YOLOv8 object detection model** to automatically identify and localize car damage in uploaded images.
+## Badges
 
-The project provides a simple **Flask-based web interface** where users can upload a car image and view detected damage areas with bounding boxes.
-
----
-
-## Project Overview
-
-The Car Damage Detector is designed to detect different types of visible damage from car images.
-
-The YOLOv8 model processes the uploaded image and identifies damage locations by generating bounding boxes and class labels.
-
-### Key Objectives
-
-* Detect visible car damage from images
-* Localize damage using bounding boxes
-* Classify detected damage types
-* Provide predictions through a Flask web application
-* Display detection results directly in the browser
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-3.1.0-lightgrey?logo=flask)](https://flask.palletsprojects.com/)
+[![Ultralytics](https://img.shields.io/badge/Ultralytics-YOLOv8-purple)](https://ultralytics.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
-## Demo
+## Overview
 
-Upload an image of a car through the web interface. The trained YOLOv8 model processes the image and highlights detected damage areas using bounding boxes.
+The **Car Damage Detector** uses a YOLOv8 object detection model to identify different types of visible damage in car images.
+
+The project combines:
+
+* YOLOv8 for object detection
+* Ultralytics for model training and inference
+* Flask for the web application
+* HTML/Jinja2 for the user interface
+* Image upload and result visualization
+
+Users can upload an image of a car, and the system processes the image using the trained `best.pt` model and displays the detected damage.
 
 ---
 
-## Model Details
+## Key Objectives
 
-| Component     | Details                         |
-| ------------- | ------------------------------- |
-| Model         | YOLOv8                          |
-| Framework     | Ultralytics                     |
-| Task          | Object Detection                |
-| Dataset       | Custom Car Damage Dataset       |
-| Model Weights | `best.pt`                       |
-| Input         | Car Images                      |
-| Output        | Damage Classes + Bounding Boxes |
+* Detect visible car damage automatically.
+* Identify different damage categories.
+* Provide confidence scores for detected objects.
+* Build a simple web interface for image-based detection.
+* Integrate a trained YOLOv8 model with Flask.
+* Display detection results directly in the browser.
 
-### Damage Classes
+---
 
-The model can be trained to detect different types of car damage, such as:
+## Project Details
+
+| Component    | Details                      |
+| ------------ | ---------------------------- |
+| Project Type | Object Detection             |
+| Domain       | Automotive / Computer Vision |
+| Model        | YOLOv8                       |
+| Framework    | Ultralytics                  |
+| Backend      | Flask                        |
+| Frontend     | HTML / Jinja2                |
+| Dataset      | Custom Car Damage Dataset    |
+| Model File   | `best.pt`                    |
+| License      | MIT                          |
+
+---
+
+## Model
+
+The project uses **YOLOv8**, an object detection architecture provided through the Ultralytics framework.
+
+The trained model is stored as:
 
 ```text
-scratch
-dent
-broken_light
-crack
+weights/best.pt
 ```
 
-> Replace the classes above with the exact classes used in your trained model if they are different.
+During inference, the model receives an uploaded image and predicts:
+
+* Damage location
+* Damage class
+* Confidence score
+* Bounding box coordinates
+
+Example detection classes may include:
+
+```python
+[
+    "scratch",
+    "dent",
+    "broken_light",
+    "crack"
+]
+```
+
+Replace the example classes above with the actual classes used in your trained dataset.
 
 ---
 
 ## System Architecture
 
 ```text
-Car Image
-    ↓
-Image Upload
-    ↓
+User
+  |
+  v
+Upload Car Image
+  |
+  v
 Flask Web Application
-    ↓
+  |
+  v
 YOLOv8 Model
-    ↓
+  |
+  v
 Object Detection
-    ↓
-Damage Classification + Bounding Boxes
-    ↓
-Detection Result
-    ↓
+  |
+  +----> Damage Class
+  |
+  +----> Confidence Score
+  |
+  +----> Bounding Box
+  |
+  v
+Annotated Result Image
+  |
+  v
 Display Result in Browser
 ```
 
 ---
 
-## Tech Stack
+## Technology Stack
 
-| Component       | Version | Description                 |
-| --------------- | ------- | --------------------------- |
-| **Python**      | —       | Application development     |
-| **Flask**       | 3.1.0   | Backend web framework       |
-| **Jinja2**      | 3.1.4   | HTML template engine        |
-| **Ultralytics** | 8.3.32  | YOLOv8 model and inference  |
-| **YOLOv8**      | —       | Car damage object detection |
+### Programming Language
+
+* Python
+
+### Backend
+
+* Flask 3.1.0
+
+### Template Engine
+
+* Jinja2 3.1.4
+
+### Computer Vision
+
+* Ultralytics YOLOv8
+* OpenCV through the detection pipeline
+
+### Model
+
+* YOLOv8
+* Custom-trained weights
+
+---
+
+## Project Structure
+
+```text
+car-damage-detector-yolov8/
+│
+├── app.py
+│
+├── static/
+│   ├── uploads/
+│   └── results/
+│
+├── templates/
+│   └── index.html
+│
+├── weights/
+│   └── best.pt
+│
+├── requirements.txt
+│
+└── README.md
+```
 
 ---
 
@@ -96,9 +173,11 @@ Display Result in Browser
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/car-damage-detector-yolov8.git
+git clone https://github.com/your-username/car-damage-detector-yolov8.git
 cd car-damage-detector-yolov8
 ```
+
+Replace `your-username` with your GitHub username.
 
 ### 2. Create a Virtual Environment
 
@@ -114,7 +193,7 @@ python -m venv venv
 venv\Scripts\activate
 ```
 
-#### macOS / Linux
+#### Linux / macOS
 
 ```bash
 source venv/bin/activate
@@ -130,168 +209,210 @@ pip install -r requirements.txt
 
 ## Requirements
 
+The project uses the following main dependencies:
+
 ```text
 Flask==3.1.0
 Jinja2==3.1.4
 ultralytics==8.3.32
 ```
 
+You can install them using:
+
+```bash
+pip install -r requirements.txt
+```
+
 ---
 
-## Usage
+## Running the Application
 
-### 1. Run the Flask Application
+Start the Flask application:
 
 ```bash
 python app.py
 ```
 
-### 2. Open the Application
+The application will run locally.
+
+Open your browser and visit:
 
 ```text
 http://127.0.0.1:5000/
 ```
 
-### 3. Upload an Image
-
-Upload a car image through the web interface.
-
-The YOLOv8 model will:
-
-1. Process the uploaded image.
-2. Detect visible damage.
-3. Draw bounding boxes around detected areas.
-4. Assign damage class labels.
-5. Save the detection result.
-6. Display the processed image in the browser.
-
 ---
 
-## Project Structure
+## Usage
 
-```text
-car-damage-detector-yolov8/
-│
-├── app.py
-│
-├── static/
-│   ├── uploads/
-│   │   └── uploaded images
-│   │
-│   └── results/
-│       └── detection results
-│
-├── templates/
-│   └── index.html
-│
-├── weights/
-│   └── best.pt
-│
-├── requirements.txt
-│
-└── README.md
-```
+### Step 1: Open the Web Application
 
-### Main Components
+Launch the Flask server and open the application in your browser.
 
-| File / Folder          | Purpose                                |
-| ---------------------- | -------------------------------------- |
-| `app.py`               | Flask application and prediction logic |
-| `weights/best.pt`      | Trained YOLOv8 model weights           |
-| `templates/index.html` | Web interface                          |
-| `static/uploads/`      | Stores uploaded images                 |
-| `static/results/`      | Stores processed detection images      |
-| `requirements.txt`     | Python dependencies                    |
-| `README.md`            | Project documentation                  |
+### Step 2: Upload an Image
+
+Select an image containing a car.
+
+### Step 3: Run Detection
+
+The uploaded image is passed to the YOLOv8 model.
+
+### Step 4: View Results
+
+The system displays the detected damage with bounding boxes and confidence scores.
 
 ---
 
 ## Detection Workflow
 
 ```text
-1. User uploads car image
-          ↓
-2. Flask receives the image
-          ↓
-3. YOLOv8 loads the trained model
-          ↓
-4. Model performs object detection
-          ↓
-5. Damage areas are identified
-          ↓
-6. Bounding boxes are generated
-          ↓
-7. Result image is saved
-          ↓
-8. Result is displayed to the user
+Input Image
+     |
+     v
+Image Upload
+     |
+     v
+Flask Application
+     |
+     v
+YOLOv8 Inference
+     |
+     v
+Damage Detection
+     |
+     v
+Bounding Boxes + Confidence
+     |
+     v
+Result Image
+     |
+     v
+Browser Display
 ```
-
----
-
-## Example Output
-
-### Input
-
-A car image containing visible damage.
-
-### Output
-
-The processed image contains:
-
-* Bounding boxes around detected damage
-* Damage class labels
-* Detection confidence scores
-
-Example:
-
-```text
-Detected Damage:
-- Scratch
-- Dent
-
-Confidence:
-Scratch: 0.91
-Dent: 0.87
-```
-
-The example values above are only for illustration and should be replaced with actual model output when available.
 
 ---
 
 ## Model Inference
 
-The trained YOLOv8 model is loaded from:
+The trained YOLOv8 model can be loaded using Ultralytics:
 
-```text
-weights/best.pt
+```python
+from ultralytics import YOLO
+
+model = YOLO("weights/best.pt")
+
+results = model("image.jpg")
 ```
 
-The model performs object detection on the uploaded image and returns detected objects along with their bounding-box coordinates and confidence scores.
+The model returns detection results that can be used to identify damage classes and their locations.
+
+---
+
+## Input
+
+The system accepts car images through the web interface.
+
+Example:
+
+```text
+car_image.jpg
+```
+
+The uploaded image is stored temporarily in:
+
+```text
+static/uploads/
+```
+
+---
+
+## Output
+
+The processed image containing detected damage is stored in:
+
+```text
+static/results/
+```
+
+The output can contain:
+
+* Bounding boxes
+* Damage labels
+* Confidence scores
+
+Example:
+
+```text
+Scratch     0.91
+Dent        0.87
+Crack       0.79
+```
+
+These values are examples only and depend on the actual model prediction.
+
+---
+
+## Main Components
+
+### `app.py`
+
+The main Flask application responsible for:
+
+* Starting the web server
+* Handling image uploads
+* Loading the YOLOv8 model
+* Running inference
+* Saving detection results
+* Returning results to the frontend
+
+### `templates/index.html`
+
+Provides the web interface for:
+
+* Image selection
+* Uploading images
+* Displaying detection results
+
+### `weights/best.pt`
+
+Contains the trained YOLOv8 model weights.
+
+### `static/uploads/`
+
+Stores uploaded input images.
+
+### `static/results/`
+
+Stores processed images containing detection results.
 
 ---
 
 ## Future Improvements
 
-* Improve detection accuracy with a larger dataset
-* Add more car damage categories
-* Add confidence threshold controls
-* Support multiple image uploads
-* Add image history and result management
-* Add REST API support
-* Deploy the application using Docker
-* Deploy the application to a cloud platform
-* Optimize the model for faster inference
-* Add real-time camera-based damage detection
+Possible improvements include:
+
+* Add more car damage categories.
+* Improve the training dataset.
+* Add data augmentation.
+* Improve model accuracy and generalization.
+* Add image quality validation.
+* Add confidence threshold controls.
+* Add batch image detection.
+* Add video-based damage detection.
+* Deploy the application using Docker.
+* Deploy the model to a cloud server.
+* Add an API endpoint for external applications.
+* Add database support for storing detection history.
 
 ---
 
 ## Limitations
 
 * Detection performance depends on the quality and diversity of the training dataset.
-* Very small or unclear damage may be difficult to detect.
-* Poor lighting, image quality, or unusual viewing angles can affect predictions.
-* The model should be evaluated on independent data before production use.
-* Detection results should be treated as automated assistance rather than a definitive insurance or repair assessment.
+* The model may perform poorly on damage types that were not included during training.
+* Poor lighting, blurry images, and unusual viewing angles can affect detection.
+* Small or partially hidden damage may be difficult to detect.
+* Model performance should be evaluated on an independent test set before production deployment.
 
 ---
 
@@ -299,20 +420,32 @@ The model performs object detection on the uploaded image and returns detected o
 
 Contributions are welcome.
 
+To contribute:
+
 1. Fork the repository.
 2. Create a new branch.
 3. Make your changes.
-4. Commit your changes.
-5. Push the branch.
-6. Open a Pull Request.
+4. Test the application.
+5. Commit your changes.
+6. Push the branch.
+7. Create a Pull Request.
 
-For major changes, open an issue first to discuss the proposed changes.
+Example:
+
+```bash
+git checkout -b feature/new-feature
+git add .
+git commit -m "Add new feature"
+git push origin feature/new-feature
+```
 
 ---
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This project is licensed under the **MIT License**.
+
+The MIT License allows users to use, modify, distribute, and reuse the project subject to the license terms.
 
 ---
 
@@ -320,12 +453,14 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 **Muhammad Behram Hassan**
 
-AI Engineer | Machine Learning | Computer Vision | Generative AI
+AI Engineer | Machine Learning | Computer Vision
 
 Email: `muhammadbehramhassan@gmail.com`
 
 ---
 
-## Support
+## Project Status
 
-If you find this project useful, consider giving the repository a star and sharing your feedback.
+**Status:** Completed
+
+The current version provides a Flask-based interface for uploading car images and performing YOLOv8-based damage detection using trained model weights.
