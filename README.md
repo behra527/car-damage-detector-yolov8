@@ -2,14 +2,12 @@
 
 A web-based car damage detection system built with **YOLOv8** and **Flask**. The application allows users to upload a car image and automatically detects visible damage using a trained object detection model.
 
-## Badges
-
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://www.python.org/)
 [![Flask](https://img.shields.io/badge/Flask-3.1.0-lightgrey?logo=flask)](https://flask.palletsprojects.com/)
 [![Ultralytics](https://img.shields.io/badge/Ultralytics-YOLOv8-purple)](https://ultralytics.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
----
+
 
 ## Overview
 
@@ -25,7 +23,7 @@ The project combines:
 
 Users can upload an image of a car, and the system processes the image using the trained `best.pt` model and displays the detected damage.
 
----
+
 
 ## Key Objectives
 
@@ -36,7 +34,7 @@ Users can upload an image of a car, and the system processes the image using the
 * Integrate a trained YOLOv8 model with Flask.
 * Display detection results directly in the browser.
 
----
+
 
 ## Project Details
 
@@ -52,7 +50,7 @@ Users can upload an image of a car, and the system processes the image using the
 | Model File   | `best.pt`                    |
 | License      | MIT                          |
 
----
+
 
 ## Model
 
@@ -84,7 +82,7 @@ Example detection classes may include:
 
 Replace the example classes above with the actual classes used in your trained dataset.
 
----
+
 
 ## System Architecture
 
@@ -116,7 +114,7 @@ Annotated Result Image
 Display Result in Browser
 ```
 
----
+
 
 ## Technology Stack
 
@@ -142,7 +140,7 @@ Display Result in Browser
 * YOLOv8
 * Custom-trained weights
 
----
+
 
 ## Project Structure
 
@@ -166,7 +164,7 @@ car-damage-detector-yolov8/
 └── README.md
 ```
 
----
+
 
 ## Installation
 
@@ -205,7 +203,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
----
+
 
 ## Requirements
 
@@ -223,7 +221,7 @@ You can install them using:
 pip install -r requirements.txt
 ```
 
----
+
 
 ## Running the Application
 
@@ -241,7 +239,7 @@ Open your browser and visit:
 http://127.0.0.1:5000/
 ```
 
----
+
 
 ## Usage
 
@@ -261,7 +259,7 @@ The uploaded image is passed to the YOLOv8 model.
 
 The system displays the detected damage with bounding boxes and confidence scores.
 
----
+
 
 ## Detection Workflow
 
@@ -290,7 +288,7 @@ Result Image
 Browser Display
 ```
 
----
+
 
 ## Model Inference
 
@@ -306,7 +304,7 @@ results = model("image.jpg")
 
 The model returns detection results that can be used to identify damage classes and their locations.
 
----
+
 
 ## Input
 
@@ -324,7 +322,7 @@ The uploaded image is stored temporarily in:
 static/uploads/
 ```
 
----
+
 
 ## Output
 
@@ -350,7 +348,7 @@ Crack       0.79
 
 These values are examples only and depend on the actual model prediction.
 
----
+
 
 ## Main Components
 
@@ -385,7 +383,7 @@ Stores uploaded input images.
 
 Stores processed images containing detection results.
 
----
+
 
 ## Future Improvements
 
@@ -404,7 +402,7 @@ Possible improvements include:
 * Add an API endpoint for external applications.
 * Add database support for storing detection history.
 
----
+
 
 ## Limitations
 
@@ -414,7 +412,7 @@ Possible improvements include:
 * Small or partially hidden damage may be difficult to detect.
 * Model performance should be evaluated on an independent test set before production deployment.
 
----
+
 
 ## Contributing
 
@@ -439,7 +437,7 @@ git commit -m "Add new feature"
 git push origin feature/new-feature
 ```
 
----
+
 
 ## License
 
@@ -447,7 +445,6 @@ This project is licensed under the **MIT License**.
 
 The MIT License allows users to use, modify, distribute, and reuse the project subject to the license terms.
 
----
 
 ## Author
 
@@ -457,7 +454,7 @@ AI Engineer | Machine Learning | Computer Vision
 
 Email: `muhammadbehramhassan@gmail.com`
 
----
+
 
 ## Project Status
 
